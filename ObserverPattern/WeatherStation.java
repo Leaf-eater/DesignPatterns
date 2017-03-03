@@ -13,10 +13,11 @@ public class WeatherStation {
     public static void main(String[] args) {
         WeatherData weatherData = new WeatherData();
         CurrentConditionsDisplay conditionsDisplay = new CurrentConditionsDisplay(weatherData);
+        weatherData.setMeasurements(12,24,35);
     }
 }
 
-    interface Subject{
+interface Subject{
     void registerObserver(Observer o);
     void removeObserver(Observer o);
     void notifyObserver();
@@ -90,7 +91,7 @@ class CurrentConditionsDisplay implements Observer , DisplayElement{
         this.weatherData = weatherData;
         weatherData.registerObserver(this);
     }
-
+//  每当数据更新的时候我们将更新数据显示出来
     public void update (float temperature, float humidity, float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
